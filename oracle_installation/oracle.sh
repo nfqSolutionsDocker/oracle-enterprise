@@ -3,7 +3,7 @@
 source /oracle_installation/colorecho.sh
 /solutions/install_packages.sh
 
-echo_title "Execute entrypoint.sh file ..."
+echo_title "Execute oracle.sh file ..."
 
 if [ ! -d "/u01/oracle/app/product/11.2.0/dbhome_1" ]; then
 	
@@ -13,7 +13,7 @@ if [ ! -d "/u01/oracle/app/product/11.2.0/dbhome_1" ]; then
 	sudo mkdir -p -m 777 /u01/oracle/app
 	sudo mkdir -p -m 777 /u01/oracle/oraInventory
 	sudo mkdir -p -m 777 /u01/oracle/dpdump
-	sudo chown -R solutions:oinstall /u01
+	sudo chown -R root:oinstall /u01
 	echo_command "--> /oracle_installation/install.sh"
 	/oracle_installation/install.sh
 fi
