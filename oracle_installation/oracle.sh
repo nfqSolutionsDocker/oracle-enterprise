@@ -14,7 +14,7 @@ if [ ! -d "/u01/app/oracle/product/11.2.0/dbhome_1" ]; then
 	sudo mkdir -p -m 777 /u01/app/oracle/dpdump
 	sudo chown -R oracle:oinstall /u01
 	echo_command "--> /oracle_installation/install.sh"
-	su - oracle -c "/oracle_installation/install.sh"
+	/oracle_installation/install.sh
 fi
 
 if [ ! -d "/u01/initial" ]; then
