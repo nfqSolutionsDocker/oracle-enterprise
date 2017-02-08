@@ -10,8 +10,7 @@ if [ ! -d "/u01/app/oracle/product/11.2.0/dbhome_1" ]; then
 	echo_command "Database is not installed. Installing..."
 	sudo mkdir -p -m 777 /u01
 	sudo mkdir -p -m 777 /u01/app/oracle
-	sudo mkdir -p -m 777 /u01/app/oracle
-	sudo mkdir -p -m 777 /u01/app/oracle/oraInventory
+	sudo mkdir -p -m 777 /u01/app/oraInventory
 	sudo mkdir -p -m 777 /u01/app/oracle/dpdump
 	sudo chown -R oracle:oinstall /u01
 	echo_command "--> /oracle_installation/install.sh"

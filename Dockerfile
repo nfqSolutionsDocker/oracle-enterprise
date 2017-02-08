@@ -26,7 +26,7 @@ RUN groupadd -g 200 oinstall && usermod -a -G oinstall oracle && \
 ENV ORACLE_BASE=/u01/app/oracle \
 	ORACLE_SID=ORA \
 	ORACLE_HOME=/u01/app/oracle/product/11.2.0/dbhome_1 \
-	ORACLE_INVENTORY=/u01/app/oracle/oraInventory \
+	ORACLE_INVENTORY=/u01/app/oraInventory \
 	ORACLE_HOME_LISTNER=/u01/app/oracle/product/11.2.0/dbhome_1 \
 	LD_LIBRARY_PATH=/u01/app/oracle/product/11.2.0/dbhome_1/lib:/lib:/usr/lib \
 	CLASSPATH=/u01/app/oracle/product/11.2.0/dbhome_1/jlib:\/u01/app/oracle/product/11.2.0/dbhome_1/rdbms/jlib \
