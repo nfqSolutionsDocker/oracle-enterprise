@@ -17,8 +17,9 @@ RUN yum install -y binutils compat-libstdc++-33 compat-libstdc++-33.i686 ksh elf
 	rm -rf /var/lib/{cache,log} /var/log/lastlog
 	
 # Configurando usuarios
-RUN groupadd -g 200 oinstall && usermod -a -G oinstall root && \
-	groupadd -g 201 dba && usermod -a -G dba root && \
+RUN useradd oracle
+RUN groupadd -g 200 oinstall && usermod -a -G oinstall oracle && \
+	groupadd -g 201 dba && usermod -a -G dba oracle && \
 	sed -i "s/pam_namespace.so/pam_namespace.so\nsession    required     pam_limits.so/g" /etc/pam.d/login
 	
 # Variables de entorno
