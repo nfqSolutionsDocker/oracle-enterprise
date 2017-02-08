@@ -95,7 +95,7 @@ echo_command "create startup.sh file: /u01/initial/startup_"$DATABASE".sh"
 echo "#!/usr/bin/env bash" >> /u01/initial/startup_$DATABASE.sh
 echo "" >> /u01/initial/startup_$DATABASE.sh
 echo "set -e" >> /u01/initial/startup_$DATABASE.sh
-echo "source /oracle_installation/colorecho" >> /u01/initial/startup_$DATABASE.sh
+echo "source /oracle_installation/colorecho.sh" >> /u01/initial/startup_$DATABASE.sh
 echo "" >> /u01/initial/startup_$DATABASE.sh
 echo "echo_yellow \"Starting database...\"" >> /u01/initial/startup_$DATABASE.sh
 echo "tail -F -n 0 \$alert_log | while read line; do echo -e \"alertlog: \$line\"; done &" >> /u01/initial/startup_$DATABASE.sh
