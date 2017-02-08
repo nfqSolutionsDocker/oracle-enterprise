@@ -27,5 +27,5 @@ rm $ORACLE_HOME/dbs/lk$ORACLE_SID
 rm $ORACLE_HOME/dbs/orapw$ORACLE_SID
 rm $ORACLE_HOME/dbs/init$ORACLE_SID.ora
 rm $ORACLE_HOME/dbs/hc_$ORACLE_SID.dat
-rm -rf /u01/oracle/app/admin/$ORACLE_SID
-rm -rf /u01/oracle/app/oradata/$ORACLE_SID
+rm -rf /u01/app/oracle/admin/$ORACLE_SID
+rm -rf /u01/app/oracle/oradata/$ORACLE_SID

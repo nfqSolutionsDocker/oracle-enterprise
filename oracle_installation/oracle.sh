@@ -5,14 +5,14 @@ source /oracle_installation/colorecho.sh
 
 echo_title "Execute oracle.sh file ..."
 
-if [ ! -d "/u01/oracle/app/product/11.2.0/dbhome_1" ]; then
+if [ ! -d "/u01/app/oracle/product/11.2.0/dbhome_1" ]; then
 	
 	echo_command "Database is not installed. Installing..."
 	sudo mkdir -p -m 777 /u01
-	sudo mkdir -p -m 777 /u01/oracle
-	sudo mkdir -p -m 777 /u01/oracle/app
-	sudo mkdir -p -m 777 /u01/oracle/oraInventory
-	sudo mkdir -p -m 777 /u01/oracle/dpdump
+	sudo mkdir -p -m 777 /u01/app/oracle
+	sudo mkdir -p -m 777 /u01/app/oracle
+	sudo mkdir -p -m 777 /u01/app/oracle/oraInventory
+	sudo mkdir -p -m 777 /u01/app/oracle/dpdump
 	sudo chown -R oracle:oinstall /u01
 	echo_command "--> /oracle_installation/install.sh"
 	su - oracle -c "/oracle_installation/install.sh"
@@ -26,7 +26,7 @@ fi
 
 echo_command "Checking shared memory..."
 df -h | grep "Mounted on" && df -h | egrep --color "^.*/u01" || echo "Shared memory is not mounted."
-chmod 777 /u01/oracle/dpdump
+chmod 777 /u01/app/oracle/dpdump
 
 #Start listener
 /oracle_installation/start_listener.sh

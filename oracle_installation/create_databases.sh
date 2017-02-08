@@ -11,7 +11,7 @@ create_db() {
 	echo_command "Database does not exist. Creating database..."
 	dbca -silent -createDatabase -responseFile /u01/initial/dbca_$1.rsp | while read line; do echo_command "dbca: $line"; done
 	echo_command "Database created $1."
-	touch /u01/oracle/app/product/11.2.0/dbhome_1/dbs/init$1.ora
+	touch /u01/app/oracle/product/11.2.0/dbhome_1/dbs/init$1.ora
 	trap_db
 }
 
