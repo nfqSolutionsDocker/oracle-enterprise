@@ -1,4 +1,9 @@
-# Oracle-XE
+# Oracle-Enterprice
+Image for running Oracle Database 11g Standard/Enterprise. Due to oracle license restrictions image is not contain database itself and will install it on first run from external directory.
+
+``This image for development use only.``
+
+Download database installation files from Oracle official site and unpack them to install_folder (It is tested with the linux.x64_11gR2 (11.2.0.1.0) version only). The operative system user is solutions.
 
 This container has the following characteristics:
 - Container nfqsolutions/centos:7.
@@ -8,17 +13,53 @@ This container has the following characteristics:
 - You must modify file "mydirectory/Disk1/response/xe.rsp". The password to users SYS and SYSTEM is environment variable, you must define in docker-compose.yml.
 
 For example, docker-compose.yml:
+
+* LINUX
 ```
-app:
- image: nfqsolutions/oracle-xe-11g
+server:
+ image: nfqsolutions/oracle-enterprise
+ privileged: true
  restart: always
- container_name: oracle-xe-11g
+ container_name: oracle-server
  ports:
   - "1521:1521"
+  - "8080:8080"
  environment:
   - PACKAGES=
-  - SYS_PASSWORD=SYS
  volumes:
   - <mydirectory>:/u01
- 
+```
+
+
+* WINDOWS
+```
+server:
+ image: nfqsolutions/oracle-enterprise
+ privileged: true
+ restart: always
+ container_name: oracle-server
+ ports:
+  - "1521:1521"
+  - "8080:8080"
+ environment:
+  - PACKAGES=
+  - DOWNLOAD_URL=<download_url>/database.tar.gz
+```
+
+Usage
+=====
+Then you can create databases and delete databases in this container. The database user is SYS/SYS, the port is 1521 and the SID is <NAME>.
+
+Create database
+-----
+```
+docker exec -it oracle_server /bin/bash
+new_database.sh <NAME>
+```
+
+Delete database
+-----
+```
+docker exec -it oracle_server /bin/bash
+delete_database.sh <NAME>
 ```
