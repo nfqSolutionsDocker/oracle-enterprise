@@ -32,7 +32,7 @@ ENV ORACLE_BASE=/u01/app/oracle \
 	CLASSPATH=/u01/app/oracle/product/11.2.0/dbhome_1/jlib:\/u01/app/oracle/product/11.2.0/dbhome_1/rdbms/jlib \
 	NLS_LANG=AMERICAN.AL32UTF8  \
 	NLS_DATE_FORMAT="YYYY-MM-DD HH24:MI:SS" \
-	PATH=$PATH:/usr/sbin:/u01/app/oracle/product/11.2.0/xe/bin:/oracle_installation
+	PATH=$PATH:/usr/sbin:/u01/app/oracle/product/11.2.0/dbhome_1/bin:/oracle_installation
 
 # Configurando sysctl
 RUN echo "net.ipv4.ip_local_port_range = 9000 65500" > /etc/sysctl.conf && \
