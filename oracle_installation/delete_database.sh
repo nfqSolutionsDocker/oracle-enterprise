@@ -2,7 +2,7 @@
 
 source /oracle_installation/colorecho.sh
 
-echo_title "Execute delete_database.sh file ..."
+echo_title "Execute delete_database file ..."
 
 export ORACLE_SID=$1
 

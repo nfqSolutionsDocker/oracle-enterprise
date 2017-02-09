@@ -6,7 +6,9 @@ MAINTAINER solutions@nfq.com
 COPY oracle_installation /oracle_installation
 RUN chmod -R 777 /oracle_installation && \
 	chmod a+x /oracle_installation/*.sh && \
-	sed -i -e 's/\r$//' /oracle_installation/*.sh
+	sed -i -e 's/\r$//' /oracle_installation/*.sh && \
+	mv /oracle_installation/new_database.sh /oracle_installation/new_database && \
+	mv /oracle_installation/delete_database.sh /oracle_installation/delete_database
 
 # Instalacion previa
 RUN yum install -y binutils compat-libstdc++-33 compat-libstdc++-33.i686 ksh elfutils-libelf \

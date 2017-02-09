@@ -2,7 +2,7 @@
 
 source /oracle_installation/colorecho.sh
 
-echo_title "Execute new_database.sh file ..."
+echo_title "Execute new_database file ..."
 
 export DATABASE=$1
 alert_log=/u01/app/oracle/diag/rdbms/$(echo $DATABASE | tr [:upper:] [:lower:])/$DATABASE/trace/alert_$DATABASE.log
@@ -85,9 +85,7 @@ echo "*.undo_tablespace='UNDOTBS1'" >> /u01/initial/spfile_$DATABASE.ora
 echo_command "Checking shared memory..."
 df -h | grep "Mounted on" && df -h | egrep --color "^.*/dev/shm" || echo_command "Shared memory is not mounted."
 
-echo "if [ ! -f /u01/app/oracle/product/11.2.0/dbhome_1/dbs/init$DATABASE.ora ]; then" >> /u01/initial/create_databases.sh
-echo "  create_db $DATABASE;" >> /u01/initial/create_databases.sh
-echo "fi " >> /u01/initial/create_databases.sh
+echo "if [ ! -f /u01/app/oracle/product/11.2.0/dbhome_1/dbs/init$DATABASE.ora ]; then create_db $DATABASE; fi " >> /u01/initial/create_databases.sh
 
 echo "/u01/initial/startup_$DATABASE.sh" >> /u01/initial/start_databases.sh
 

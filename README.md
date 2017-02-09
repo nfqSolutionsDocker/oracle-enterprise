@@ -53,13 +53,11 @@ Then you can create databases and delete databases in this container. The databa
 Create database
 -----
 ```
-docker exec -it oracle_server /bin/bash
-new_database.sh <NAME>
+docker exec -it oracle_server new_database <NAME>
 ```
 
 Delete database
 -----
 ```
-docker exec -it oracle_server /bin/bash
-delete_database.sh <NAME>
+docker exec -it oracle_server delete_database <NAME>
 ```
