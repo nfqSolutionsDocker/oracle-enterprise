@@ -8,8 +8,8 @@ trap_db() {
 }
 
 start_listener() {
-	echo_command3 "Starting listener..."
-	lsnrctl start | while read line; do echo_command3 "start_listener: $line"; done
+	echo_command2 "Starting listener..."
+	lsnrctl start | while read line; do echo_command2 "start_listener: $line"; done
 	LISTENER_PID=$!
 	trap_db
 }
