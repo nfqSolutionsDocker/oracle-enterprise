@@ -9,7 +9,7 @@ trap "echo_red '******* Caught SIGINT signal. Stopping...'; exit 2" SIGINT
 
 if [ ! -z "$DOWNLOAD_URL" ]; then
 	cd /u01
-	wget "$DOWNLOAD_URL"
+	wget $DOWNLOAD_URL
 	tar -xvzf database.tar.gz
 	chmod -R 777 /u01/database
 fi
