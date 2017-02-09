@@ -33,4 +33,4 @@ rm $ORACLE_HOME/dbs/hc_$ORACLE_SID.dat
 rm -rf /u01/app/oracle/admin/$ORACLE_SID
 rm -rf /u01/app/oracle/oradata/$ORACLE_SID
 
-echo_red "Delete $ORACLE_SID finished.""
+echo_red "Delete $ORACLE_SID finished."
