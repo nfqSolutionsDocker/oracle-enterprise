@@ -26,20 +26,6 @@ RUN groupadd -g 200 oinstall && groupadd -g 201 dba && \
 	sed -i "s/Defaults    requiretty/#Defaults    requiretty/g" /etc/sudoers && \
 	sed -i "s/pam_namespace.so/pam_namespace.so\nsession    required     pam_limits.so/g" /etc/pam.d/login
 	
-USER oracle
-	
-# Variables de entorno
-ENV ORACLE_BASE=/u01/app/oracle \
-	ORACLE_SID=ORA \
-	ORACLE_HOME=/u01/app/oracle/product/11.2.0/dbhome_1 \
-	ORACLE_INVENTORY=/u01/app/oraInventory \
-	ORACLE_HOME_LISTNER=/u01/app/oracle/product/11.2.0/dbhome_1 \
-	LD_LIBRARY_PATH=/u01/app/oracle/product/11.2.0/dbhome_1/lib:/lib:/usr/lib \
-	CLASSPATH=/u01/app/oracle/product/11.2.0/dbhome_1/jlib:\/u01/app/oracle/product/11.2.0/dbhome_1/rdbms/jlib \
-	NLS_LANG=AMERICAN.AL32UTF8  \
-	NLS_DATE_FORMAT="YYYY-MM-DD HH24:MI:SS" \
-	PATH=$PATH:/usr/sbin:/u01/app/oracle/product/11.2.0/dbhome_1/bin:/oracle_installation
-
 # Configurando sysctl
 RUN echo "net.ipv4.ip_local_port_range = 9000 65500" > /etc/sysctl.conf && \
 	echo "fs.file-max = 6815744" >> /etc/sysctl.conf && \
@@ -59,6 +45,20 @@ RUN echo "oracle   soft   nproc   2047" >> /etc/security/limits.conf && \
 	echo "oracle   soft   nofile   1024" >> /etc/security/limits.conf && \
 	echo "oracle   hard   nofile   65536" >> /etc/security/limits.conf
 	
+USER oracle
+	
+# Variables de entorno
+ENV ORACLE_BASE=/u01/app/oracle \
+	ORACLE_SID=ORA \
+	ORACLE_HOME=/u01/app/oracle/product/11.2.0/dbhome_1 \
+	ORACLE_INVENTORY=/u01/app/oraInventory \
+	ORACLE_HOME_LISTNER=/u01/app/oracle/product/11.2.0/dbhome_1 \
+	LD_LIBRARY_PATH=/u01/app/oracle/product/11.2.0/dbhome_1/lib:/lib:/usr/lib \
+	CLASSPATH=/u01/app/oracle/product/11.2.0/dbhome_1/jlib:\/u01/app/oracle/product/11.2.0/dbhome_1/rdbms/jlib \
+	NLS_LANG=AMERICAN.AL32UTF8  \
+	NLS_DATE_FORMAT="YYYY-MM-DD HH24:MI:SS" \
+	PATH=$PATH:/usr/sbin:/u01/app/oracle/product/11.2.0/dbhome_1/bin:/oracle_installation
+
 # Volumenes para el docker
 VOLUME /u01
 
