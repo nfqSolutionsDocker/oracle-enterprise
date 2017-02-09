@@ -2,6 +2,8 @@
 
 source /oracle_installation/colorecho.sh
 
+echo_title "Execute create_databases.sh file ..."
+
 trap_db() {
 	trap "echo_red 'Caught SIGTERM signal, shutting down...'; stop" SIGTERM;
 	trap "echo_red 'Caught SIGINT signal, shutting down...'; stop" SIGINT;
@@ -18,19 +20,19 @@ create_db() {
 stop() {
     trap '' SIGINT SIGTERM
 	shu_immediate
-	echo_command3 "Shutting down listener..."
-	lsnrctl stop | while read line; do echo_command3 "lsnrctl: $line"; done
+	echo_command "Shutting down listener..."
+	lsnrctl stop | while read line; do echo_command "lsnrctl: $line"; done
 	kill $LISTENER_PID
 	exit 0
 }
 
 shu_immediate() {
 	ps -ef | grep ora_pmon | grep -v grep > /dev/null && \
-	echo_command3 "Shutting down the database..." && \
+	echo_command "Shutting down the database..." && \
 	sqlplus / as sysdba <<-EOF |
 		set echo on
 		shutdown immediate;
 		exit 0
 	EOF
-	while read line; do echo_command3 "sqlplus: $line"; done
+	while read line; do echo_command "sqlplus: $line"; done
 }

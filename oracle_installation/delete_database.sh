@@ -2,6 +2,8 @@
 
 source /oracle_installation/colorecho.sh
 
+echo_title "Execute delete_database.sh file ..."
+
 export ORACLE_SID=$1
 
 sqlplus / as sysdba <<-EOF | 

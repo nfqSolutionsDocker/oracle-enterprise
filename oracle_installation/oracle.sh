@@ -28,13 +28,17 @@ df -h | grep "Mounted on" && df -h | egrep --color "^.*/u01" || echo_command "Sh
 chmod 777 /u01/app/oracle/dpdump
 
 #Start listener
+echo_command "--> /oracle_installation/start_listener.sh"
 /oracle_installation/start_listener.sh
 
 #Create databases
+echo_command "--> /u01/initial/create_databases.sh"
 /u01/initial/create_databases.sh
 
 #Start databases
+echo_command "--> /u01/initial/start_databases.sh"
 /u01/initial/start_databases.sh
 
 #Listener log
+echo_command "--> /oracle_installation/listener_log.sh"
 /oracle_installation/listener_log.sh

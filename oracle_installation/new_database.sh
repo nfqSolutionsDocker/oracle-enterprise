@@ -2,7 +2,7 @@
 
 source /oracle_installation/colorecho.sh
 
-echo_title "Execute db_create.sh file ..."
+echo_title "Execute new_database.sh file ..."
 
 export DATABASE=$1
 alert_log=/u01/app/oracle/diag/rdbms/$(echo $DATABASE | tr [:upper:] [:lower:])/$DATABASE/trace/alert_$DATABASE.log
