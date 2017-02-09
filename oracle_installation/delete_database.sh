@@ -19,15 +19,18 @@ rman target / <<-EOF |
 EOF
 while read line; do echo_red "rman: $line"; done
 
-sed '/'$ORACLE_SID'/d' /etc/oratab
+echo_red "Borrando referencias ..."
+sudo sed -i "/$ORACLE_SID/d" /etc/oratab
 rm /u01/initial/spfile_$ORACLE_SID.ora
 rm /u01/initial/dbca_$ORACLE_SID.rsp
 rm /u01/initial/startup_$ORACLE_SID.sh
-sed '/'$ORACLE_SID'/d' /u01/initial/create_databases.sh
-sed '/'$ORACLE_SID'/d' /u01/initial/start_databases.sh
+sed -i "/$ORACLE_SID/d" /u01/initial/create_databases.sh
+sed -i "/$ORACLE_SID/d" /u01/initial/start_databases.sh
 rm $ORACLE_HOME/dbs/lk$ORACLE_SID
 rm $ORACLE_HOME/dbs/orapw$ORACLE_SID
 rm $ORACLE_HOME/dbs/init$ORACLE_SID.ora
 rm $ORACLE_HOME/dbs/hc_$ORACLE_SID.dat
 rm -rf /u01/app/oracle/admin/$ORACLE_SID
 rm -rf /u01/app/oracle/oradata/$ORACLE_SID
+
+echo_red "Delete $ORACLE_SID finished.""
