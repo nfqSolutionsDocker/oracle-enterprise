@@ -100,7 +100,7 @@ echo "" >> /u01/initial/startup_$DATABASE.sh
 echo "echo_yellow \"Starting database...\"" >> /u01/initial/startup_$DATABASE.sh
 echo "tail -F -n 0 \$alert_log | while read line; do echo -e \"alertlog: \$line\"; done &" >> /u01/initial/startup_$DATABASE.sh
 echo "export ORACLE_SID=$DATABASE" >> /u01/initial/startup_$DATABASE.sh
-echo "sqlplus / as sysdba <<-EOF | " >> /u01/initial/startup_$DATABASE.sh
+echo "sqlplus SYS/SYS as sysdba <<-EOF | " >> /u01/initial/startup_$DATABASE.sh
 echo "STARTUP pfile=/u01/initial/spfile_$DATABASE.ora" >> /u01/initial/startup_$DATABASE.sh
 echo "EOF" >> /u01/initial/startup_$DATABASE.sh
 echo "while read line; do echo -e \"sqlplus: \$line\"; done" >> /u01/initial/startup_$DATABASE.sh

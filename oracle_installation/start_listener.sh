@@ -26,7 +26,7 @@ stop() {
 shu_immediate() {
 	ps -ef | grep ora_pmon | grep -v grep > /dev/null && \
 	echo_command3 "Shutting down the database..." && \
-	sqlplus / as sysdba <<-EOF |
+	sqlplus SYS/SYS as sysdba <<-EOF |
 		set echo on
 		shutdown immediate;
 		exit 0
