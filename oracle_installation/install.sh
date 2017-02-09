@@ -7,9 +7,9 @@ echo_title2 "Execute install.sh file ..."
 trap "echo_red '******* ERROR: Something went wrong.'; exit 1" SIGTERM
 trap "echo_red '******* Caught SIGINT signal. Stopping...'; exit 2" SIGINT
 
-if [ ! -z $DOWNLOAD_URL ]; then
+if [ ! -z "$DOWNLOAD_URL" ]; then
 	cd /u01
-	wget $DOWNLOAD_URL
+	wget "$DOWNLOAD_URL"
 	tar -xvzf database.tar.gz
 	chmod -R 777 /u01/database
 fi
