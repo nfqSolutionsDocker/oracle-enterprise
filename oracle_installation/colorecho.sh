@@ -18,35 +18,35 @@ echo_title() {
 	echo -e "${cctitle}$@${ccend}"
 }
 
-echo_title2() {
-	echo -e "${cctitle2}$@${ccend}"
-}
+#echo_title2() {
+#	echo -e "${cctitle2}$@${ccend}"
+#}
 
-echo_title3() {
-	echo -e "${cctitle3}$@${ccend}"
-}
+#echo_title3() {
+#	echo -e "${cctitle3}$@${ccend}"
+#}
 
 echo_command() {
 	echo -e "${cccommand}$@${ccend}"
 }
 
-echo_command2() {
-	echo -e "${cccommand2}$@${ccend}"
-}
+#echo_command2() {
+#	echo -e "${cccommand2}$@${ccend}"
+#}
 
-echo_command3() {
-	echo -e "${cccommand3}$@${ccend}"
-}
+#echo_command3() {
+#	echo -e "${cccommand3}$@${ccend}"
+#}
 
 echo_red() {
     echo -e "${ccred}$@${ccend}"
 }
 
-echo_green() {
-    echo -e "${ccgreen}$@${ccend}"
-}
+#echo_green() {
+#    echo -e "${ccgreen}$@${ccend}"
+#}
 
-echo_yellow() {
-    echo -e "${ccyellow}$@${ccend}"
-}
+#echo_yellow() {
+#    echo -e "${ccyellow}$@${ccend}"
+#}
 

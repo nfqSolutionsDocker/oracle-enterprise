@@ -83,7 +83,7 @@ echo "*.sga_target=524288000" >> /u01/initial/spfile_$DATABASE.ora
 echo "*.undo_tablespace='UNDOTBS1'" >> /u01/initial/spfile_$DATABASE.ora
 
 echo_command "Checking shared memory..."
-df -h | grep "Mounted on" && df -h | egrep --color "^.*/dev/shm" || echo "Shared memory is not mounted."
+df -h | grep "Mounted on" && df -h | egrep --color "^.*/dev/shm" || echo_command "Shared memory is not mounted."
 
 echo "if [ ! -f /u01/app/oracle/product/11.2.0/dbhome_1/dbs/init$DATABASE.ora ]; then" >> /u01/initial/create_databases.sh
 echo "  create_db $DATABASE;" >> /u01/initial/create_databases.sh
@@ -97,13 +97,13 @@ echo "" >> /u01/initial/startup_$DATABASE.sh
 echo "set -e" >> /u01/initial/startup_$DATABASE.sh
 echo "source /oracle_installation/colorecho.sh" >> /u01/initial/startup_$DATABASE.sh
 echo "" >> /u01/initial/startup_$DATABASE.sh
-echo "echo_yellow \"Starting database...\"" >> /u01/initial/startup_$DATABASE.sh
-echo "tail -F -n 0 \$alert_log | while read line; do echo -e \"alertlog: \$line\"; done &" >> /u01/initial/startup_$DATABASE.sh
+echo "echo_command \"Starting database...\"" >> /u01/initial/startup_$DATABASE.sh
+echo "tail -F -n 0 \$alert_log | while read line; do echo_command \"alertlog: \$line\"; done &" >> /u01/initial/startup_$DATABASE.sh
 echo "export ORACLE_SID=$DATABASE" >> /u01/initial/startup_$DATABASE.sh
 echo "sqlplus / as sysdba <<-EOF | " >> /u01/initial/startup_$DATABASE.sh
 echo "STARTUP pfile=/u01/initial/spfile_$DATABASE.ora" >> /u01/initial/startup_$DATABASE.sh
 echo "EOF" >> /u01/initial/startup_$DATABASE.sh
-echo "while read line; do echo -e \"sqlplus: \$line\"; done" >> /u01/initial/startup_$DATABASE.sh
+echo "while read line; do echo_command \"sqlplus: \$line\"; done" >> /u01/initial/startup_$DATABASE.sh
 
 echo_command "added startup.sh file to entrypoint_oracle.sh"
 chmod 777 /u01/initial/startup_$DATABASE.sh
