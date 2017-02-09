@@ -24,7 +24,7 @@ if [ ! -d "/u01/initial" ]; then
 fi
 
 echo_command "Checking shared memory..."
-df -h | grep "Mounted on" && df -h | egrep --color "^.*/u01" || echo "Shared memory is not mounted."
+df -h | grep "Mounted on" && df -h | egrep --color "^.*/u01" || echo_command "Shared memory is not mounted."
 chmod 777 /u01/app/oracle/dpdump
 
 #Start listener
