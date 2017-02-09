@@ -10,7 +10,7 @@ trap "echo_red '******* Caught SIGINT signal. Stopping...'; exit 2" SIGINT
 if [ ! -z "$DOWNLOAD_URL" ]; then
 	cd /u01
 	echo_command "Descargando fichero database.tar.gz ..."
-	wget $DOWNLOAD_URL > /dev/null
+	wget $DOWNLOAD_URL -q -o /dev/null
 	echo_command "Descomprimiendo fichero database.tar.gz ..."
 	tar -xvzf database.tar.gz > /dev/null
 	chmod -R 777 /u01/database
