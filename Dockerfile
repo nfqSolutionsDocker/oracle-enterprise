@@ -18,9 +18,15 @@ RUN yum install -y binutils compat-libstdc++-33 compat-libstdc++-33.i686 ksh elf
 	
 # Configurando usuarios
 RUN useradd oracle
-RUN groupadd -g 200 oinstall && usermod -a -G oinstall oracle && \
-	groupadd -g 201 dba && usermod -a -G dba oracle && \
+RUN groupadd -g 200 oinstall && groupadd -g 201 dba && \
+	usermod -a -G root,oinstall,dba oracle && \
+	echo "root:solutions" | chpasswd && \
+ 	echo "oracle:solutions" | chpasswd && \
+	echo "oracle ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers && \
+	sed -i "s/Defaults    requiretty/#Defaults    requiretty/g" /etc/sudoers && \
 	sed -i "s/pam_namespace.so/pam_namespace.so\nsession    required     pam_limits.so/g" /etc/pam.d/login
+	
+USER oracle
 	
 # Variables de entorno
 ENV ORACLE_BASE=/u01/app/oracle \
@@ -48,10 +54,10 @@ RUN echo "net.ipv4.ip_local_port_range = 9000 65500" > /etc/sysctl.conf && \
 	echo "fs.aio-max-nr = 1048576" >> /etc/sysctl.conf
 	
 # Configurando limits files
-RUN echo "root   soft   nproc   2047" >> /etc/security/limits.conf && \
-	echo "root   hard   nproc   16384" >> /etc/security/limits.conf && \
-	echo "root   soft   nofile   1024" >> /etc/security/limits.conf && \
-	echo "root   hard   nofile   65536" >> /etc/security/limits.conf
+RUN echo "oracle   soft   nproc   2047" >> /etc/security/limits.conf && \
+	echo "oracle   hard   nproc   16384" >> /etc/security/limits.conf && \
+	echo "oracle   soft   nofile   1024" >> /etc/security/limits.conf && \
+	echo "oracle   hard   nofile   65536" >> /etc/security/limits.conf
 	
 # Volumenes para el docker
 VOLUME /u01

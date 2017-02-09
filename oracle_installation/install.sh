@@ -21,6 +21,6 @@ fi
 
 echo_command2 "Installing Oracle Database 11g"
 
-su - oracle -c "/u01/database/runInstaller -silent -ignorePrereq -waitforcompletion -responseFile /oracle_installation/db_install.rsp" | while read line; do echo_command2 "runInstaller: $line"; done
+/u01/database/runInstaller -silent -ignorePrereq -waitforcompletion -responseFile /oracle_installation/db_install.rsp | while read line; do echo_command2 "runInstaller: $line"; done
 /u01/app/oraInventory/orainstRoot.sh | while read line; do echo_command2 "orainstRoot.sh: $line"; done
 /u01/app/oracle/product/11.2.0/dbhome_1/root.sh | while read line; do echo_command2 "root.sh: $line"; done

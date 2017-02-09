@@ -4,7 +4,7 @@ source /oracle_installation/colorecho.sh
 
 export ORACLE_SID=$1
 
-sqlplus SYS/SYS as sysdba <<-EOF | 
+sqlplus / as sysdba <<-EOF | 
 	shutdown immediate;
 	startup mount exclusive restrict;
 	exit 0;
