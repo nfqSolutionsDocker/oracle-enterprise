@@ -26,7 +26,8 @@ RUN groupadd -g 200 oinstall && groupadd -g 201 dba && \
  	echo "oracle:solutions" | chpasswd && \
 	echo "oracle ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers && \
 	sed -i "s/Defaults    requiretty/#Defaults    requiretty/g" /etc/sudoers && \
-	sed -i "s/pam_namespace.so/pam_namespace.so\nsession    required     pam_limits.so/g" /etc/pam.d/login
+	sed -i "s/pam_namespace.so/pam_namespace.so\nsession    required     pam_limits.so/g" /etc/pam.d/login && \
+	mkdir -p -m 777 /u01
 	
 # Configurando sysctl
 RUN echo "net.ipv4.ip_local_port_range = 9000 65500" > /etc/sysctl.conf && \
@@ -62,7 +63,6 @@ ENV ORACLE_BASE=/u01/app/oracle \
 	PATH=$PATH:/usr/sbin:/u01/app/oracle/product/11.2.0/dbhome_1/bin:/oracle_installation
 
 # Volumenes para el docker
-RUN mkdir -p -m 777 /u01
 VOLUME /u01
 
 # Puerto de salida del docker
