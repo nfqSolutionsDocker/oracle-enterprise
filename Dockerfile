@@ -62,6 +62,7 @@ ENV ORACLE_BASE=/u01/app/oracle \
 	PATH=$PATH:/usr/sbin:/u01/app/oracle/product/11.2.0/dbhome_1/bin:/oracle_installation
 
 # Volumenes para el docker
+RUN mkdir -p -m 777 /u01
 VOLUME /u01
 
 # Puerto de salida del docker

@@ -8,7 +8,6 @@ echo_title "Execute oracle.sh file ..."
 if [ ! -d "/u01/app/oracle/product/11.2.0/dbhome_1" ]; then
 	
 	echo_command "Database is not installed. Installing..."
-	mkdir -p -m 777 /u01
 	mkdir -p -m 777 /u01/app/oracle
 	mkdir -p -m 777 /u01/app/oraInventory
 	mkdir -p -m 777 /u01/app/oracle/dpdump
